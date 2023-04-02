@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import { Spinner } from "@chakra-ui/react";
 
 function Home() {
-  const { data: products, isLoading } = useFetchAllProducts(8);
+  const { data: products, isLoading } = useFetchAllProducts(8, 1, "published");
   return (
     <div className="App">
       <div className="w-full">

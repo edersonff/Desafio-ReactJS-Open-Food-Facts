@@ -1,13 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
-import { QueryFunctionContext } from "react-query";
+import { useQuery, QueryFunctionContext } from "@tanstack/react-query";
 
 import { ProductService, ListProducts, GetProduct } from "./product";
 
 export async function getAllProducts(
   ctx: QueryFunctionContext
 ): Promise<ListProducts> {
-  const [, limit, offset] = ctx.queryKey;
-  const { data } = await ProductService.list(Number(limit), Number(offset));
+  const [, limit, offset, status] = ctx.queryKey;
+  const { data } = await ProductService.list(
+    Number(limit),
+    Number(offset),
+    String(status)
+  );
 
   return data;
 }
@@ -21,8 +24,15 @@ export async function getProduct(
   return data;
 }
 
-export default function useFetchAllProducts(limit?: number, offset?: number) {
-  return useQuery<ListProducts>(["products", limit, offset], getAllProducts);
+export default function useFetchAllProducts(
+  limit?: number,
+  offset?: number,
+  status?: string
+) {
+  return useQuery<ListProducts>(
+    ["products", limit, offset, status],
+    getAllProducts
+  );
 }
 
 export function useFetchProduct(code: string) {
