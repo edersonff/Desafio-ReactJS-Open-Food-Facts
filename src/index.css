@@ -1,3 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.center{
+  @apply flex justify-center items-center;
+}
+
+.rainbow-text{
+  background-image: linear-gradient(to right, 
+  #FF0000 0%, 
+  #FF0000 16.666%, 
+  #FF4000 16.666%, 
+  #FF4000 33.333%, 
+  #FF8000 33.333%, 
+  #FF8000 50%, 
+  #FFBF00 50%, 
+  #FFBF00 66.666%, 
+  #FFFF00 66.666%, 
+  #FFFF00 83.333%, 
+  #80FF00 83.333%, 
+  #80FF00 100%, 
+  #00FF40 100%);
+  background-clip: text;
+  background-size: contain;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
