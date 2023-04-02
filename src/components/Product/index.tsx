@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineCheck, AiOutlineShoppingCart } from "react-icons/ai";
 import { Product } from "../../services/products/product";
 import { useCartStore } from "../../store/cart";
+import { motion } from "framer-motion";
 
 const colorsRainbow = [
   "#ef4444",
@@ -30,7 +31,13 @@ export default function ProductComp({ item, i }: { item: Product; i: number }) {
   };
 
   return (
-    <div className="flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: (i % 4) * 0.1 }}
+      viewport={{ once: true }}
+      className="flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden"
+    >
       <div
         className="w-1/3 bg-cover"
         style={{
@@ -108,6 +115,6 @@ export default function ProductComp({ item, i }: { item: Product; i: number }) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
