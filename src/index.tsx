@@ -4,7 +4,7 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider } from "react-router-dom";
 import routes from "./routes";
-import { ChakraBaseProvider } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const root = ReactDOM.createRoot(
@@ -14,11 +14,11 @@ const queryClient = new QueryClient();
 
 root.render(
   <QueryClientProvider client={queryClient} contextSharing={true}>
-    <ChakraBaseProvider>
+    <ChakraProvider>
       <React.StrictMode>
         <RouterProvider router={routes} />
       </React.StrictMode>
-    </ChakraBaseProvider>
+    </ChakraProvider>
   </QueryClientProvider>
 );
 
